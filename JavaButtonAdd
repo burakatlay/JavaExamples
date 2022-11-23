@@ -1,0 +1,54 @@
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
+/*
+ * @author burakatlay
+ */
+public class NewJFrame extends javax.swing.JFrame {
+
+    /**
+     * Creates new form NewJFrame
+     */
+    public NewJFrame() {
+        initComponents();
+        this.setSize(160,400);
+        
+        int x = 10, y = 10;
+        
+        for (int i=0;i < 7; i++) {
+            JButton buton = new JButton("+");//enhansive button
+            buton.setBounds(x, y, 40, 30);
+            this.add(buton);
+            
+            JTextField textField = new JTextField();
+            textField.setBounds(60, y, 40, 30);
+            textField.setEditable(false);
+            textField.setText("0");
+            this.add(textField);
+            
+            buton.addActionListener((ActionEvent e) -> {
+                    int ValueField = Integer.parseInt(textField.getText());
+                    ValueField++;
+                    textField.setText(String.valueOf(ValueField));
+                });
+            
+            x = 110;
+            
+            buton = new JButton("-");//decreasing button
+            buton.setBounds(x, y, 40, 30);
+            this.add(buton);
+            
+            buton.addActionListener((ActionEvent e) -> {
+                    int ValueField = Integer.parseInt(textField.getText());
+                    ValueField--;
+                    textField.setText(String.valueOf(ValueField));
+                });
+            
+            x = 10;
+            y += 30;
+            
+        }
+    }
